@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Installation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://biocypher.org/installation.html" />
+<meta property="og:site_name" content="BioCypher" />
+<meta property="og:description" content="Install as a dependency for your KG pipeline: Preconfigured project with BioCypher as a dependency, including docker integration: The recommended way of installing BioCypher is through the PyPI dis..." />
+<meta property="og:image" content="https://biocypher.org/_images/biocypher-open-graph.png" />
+<meta property="og:image:alt" content="BioCypher" />
+<meta name="description" content="Install as a dependency for your KG pipeline: Preconfigured project with BioCypher as a dependency, including docker integration: The recommended way of installing BioCypher is through the PyPI dis..." />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://biocypher.org" />
+<meta property="twitter:title" content="Democratising Knowledge Graphs - BioCypher" />
+<meta property="twitter:description" content="BioCypher is a framework to simplify the creation of robust biomedical knowledge graphs." />
+<meta property="twitter:image" content="https://biocypher.org/_images/biocypher-open-graph.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; BioCypher</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/design-tabs.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quickstart" href="quickstart.html" />
+    <link rel="prev" title="Get Involved!" href="get-involved.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html" class="icon icon-home">
+            BioCypher
+          </a>
+              <div class="version">
+                0.5.41
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Democratising Knowledge Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-experiences.html">User Experiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-as-a-dependency-for-your-kg-pipeline">Install as a dependency for your KG pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-developers">For developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#biocypher-settings">BioCypher settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adapters.html">Adapters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/pandas_tutorial.html">Example Notebook: BioCypher and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-ontology.html">Tutorial - Handling Ontologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-adapter.html">Tutorial - Adapters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standalone-docker-image.html">Standalone Docker Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output/index.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r-bioc.html">R and Bioconductor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">BioCypher</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<section id="install-as-a-dependency-for-your-kg-pipeline">
+<h2>Install as a dependency for your KG pipeline<a class="headerlink" href="#install-as-a-dependency-for-your-kg-pipeline" title="Permalink to this heading"></a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover sd-text-center docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Preconfigured project with BioCypher as a dependency, including docker integration:</div>
+<p class="sd-card-text"><svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-repo" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z"></path><path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"></path></svg> <svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 15.584V8.416a.5.5 0 01.77-.42l5.576 3.583a.5.5 0 010 .842l-5.576 3.584a.5.5 0 01-.77-.42z"></path><path fill-rule="evenodd" d="M12 2.5a9.5 9.5 0 100 19 9.5 9.5 0 000-19zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"></path></svg> <svg version="1.1" width="3.0em" height="3.0em" class="sd-octicon sd-octicon-container" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M13.152.682a2.25 2.25 0 012.269 0l.007.004 6.957 4.276a2.276 2.276 0 011.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003a2.276 2.276 0 01-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 01-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026a2.28 2.28 0 01.82-.827h.002L13.152.681zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.776.776 0 00.758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 00-.75.003zM18 9.709l-3.25 1.9v7.548L18 17.245V9.709zm1.5-.878v7.532l2.124-1.25a.777.777 0 00.387-.671V7.363L19.5 8.831zm-9.09 5.316l2.84-1.66v7.552l-3.233 1.902v-7.612c.134-.047.265-.107.391-.18l.002-.002zm-1.893 7.754V14.33a2.277 2.277 0 01-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232z"></path></svg></p>
+</div>
+<a class="sd-stretched-link reference external" href="https://github.com/biocypher/project-template"></a></div>
+</div>
+</div>
+</div>
+<p>The recommended way of installing BioCypher is through the PyPI distribution.
+You can use any package manager that can install from PyPI, such as pip, conda,
+poetry, etc. We recommend Poetry, you can get it
+<a class="reference external" href="https://python-poetry.org/docs/#installation">here</a>. You can install BioCypher
+as a dependency as follows:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">poetry install</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>new<span class="w"> </span>my-awesome-kg-project
+<span class="nb">cd</span><span class="w"> </span>my-awesome-kg-project
+poetry<span class="w"> </span>add<span class="w"> </span>biocypher
+</pre></div>
+</div>
+</div>
+<p>Alternatively, using conda/pip:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">pip install</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>biocypher<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+conda<span class="w"> </span>activate<span class="w"> </span>biocypher
+pip<span class="w"> </span>install<span class="w"> </span>biocypher
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>BioCypher generally supports the most recent three Python versions. If you
+encounter any issues with a specific Python version, please open an issue on
+GitHub.</p>
+</div>
+</section>
+<section id="for-developers">
+<h2>For developers<a class="headerlink" href="#for-developers" title="Permalink to this heading"></a></h2>
+<p>If you want to directly install BioCypher, here are the steps (requires
+<a class="reference external" href="https://python-poetry.org/docs/#installation">Poetry</a>):</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Execute in bash</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/biocypher/biocypher
+<span class="nb">cd</span><span class="w"> </span>BioCypher
+poetry<span class="w"> </span>install
+</pre></div>
+</div>
+</div>
+<p>Poetry creates a virtual environment for you (starting with <code class="docutils literal notranslate"><span class="pre">biocypher-</span></code>;
+alternatively you can name it yourself) and installs all dependencies.</p>
+<p>If you want to run the tests that use a local Neo4j or PostgreSQL DBMS (database
+management system) instance:</p>
+<ul class="simple">
+<li><p>Make sure that you have a Neo4j instance with the APOC plugin installed and a
+database named <code class="docutils literal notranslate"><span class="pre">test</span></code> running on standard bolt port <code class="docutils literal notranslate"><span class="pre">7687</span></code></p></li>
+<li><p>A PostgreSQL instance with the psql command line tool should be installed
+locally and running on standard port <code class="docutils literal notranslate"><span class="pre">5432</span></code></p></li>
+<li><p>Activate the virtual environment by running <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">poetry</span> <span class="pre">shell</span></code> and then run the
+tests by running <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">pytest</span></code> in the root directory of the repository with the
+command line argument <code class="docutils literal notranslate"><span class="pre">--password=&lt;your</span> <span class="pre">DBMS</span> <span class="pre">password&gt;</span></code>.</p></li>
+</ul>
+<p>Once this is set up, you can go through the <a class="reference internal" href="tutorial.html#tutorial-basic"><span class="std std-ref">tutorial</span></a> or use it
+in your project as a local dependency.</p>
+</section>
+</section>
+<section id="configuration">
+<span id="config"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h1>
+<p>BioCypher comes with a default set of configuration parameters. You can
+overwrite them by creating a <code class="docutils literal notranslate"><span class="pre">biocypher_config.yaml</span></code> file in the root directory
+or the <code class="docutils literal notranslate"><span class="pre">config</span></code> directory of your project. You only need to specify the ones you
+wish to override from default. If you want to create global user settings, you
+can create a <code class="docutils literal notranslate"><span class="pre">biocypher_config.yaml</span></code> in your default BioCypher user directory
+(as found using <code class="docutils literal notranslate"><span class="pre">appdirs.user_config_dir('biocypher')</span></code>). For instance, on Mac
+OS, this would be <code class="docutils literal notranslate"><span class="pre">~/Library/Caches/biocypher/biocypher_config.yaml</span></code>. Finally,
+you can also point an instance of the
+<a class="reference external" href="https://biocypher.org/modules/biocypher.BioCypher.html#biocypher.BioCypher">BioCypher</a>
+class to any YAML file using the <code class="docutils literal notranslate"><span class="pre">biocypher_config_path</span></code> parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to follow the rules of indentation in the YAML file. BioCypher
+module configuration is found under the top-level keyword <code class="docutils literal notranslate"><span class="pre">biocypher</span></code>, while
+the settings for DBMS systems (e.g., Neo4j) are found under their respective
+keywords (e.g., <code class="docutils literal notranslate"><span class="pre">neo4j</span></code>).</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Quote characters</p>
+<p>If possible, avoid using quote characters in your YAML files. If you need to
+quote, for instance a tab delimiter (<code class="docutils literal notranslate"><span class="pre">\t</span></code>), use single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>), since
+double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) allow parsing of escape characters in YAML, which can cause
+issues downstream. It is safe to use double quotes to quote a single quote
+character (<code class="docutils literal notranslate"><span class="pre">&quot;'&quot;</span></code>).</p>
+</div>
+<p>Configuration files are read in the order <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">-&gt;</span> <span class="pre">user</span> <span class="pre">level</span> <span class="pre">-&gt;</span> <span class="pre">project</span> <span class="pre">level</span></code>, with the later ones overriding the preceding. The following parameters
+are available:</p>
+<section id="biocypher-settings">
+<h2>BioCypher settings<a class="headerlink" href="#biocypher-settings" title="Permalink to this heading"></a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">biocypher_config.yaml</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">biocypher</span><span class="p">:</span><span class="w">  </span><span class="c1">### BioCypher module configuration ###</span>
+
+<span class="w">  </span><span class="c1">### Required parameters ###</span>
+<span class="w">  </span><span class="c1"># DBMS type</span>
+<span class="w">  </span><span class="nt">dbms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neo4j</span>
+
+<span class="w">  </span><span class="c1"># Offline mode: do not connect to a running DBMS instance</span>
+<span class="w">  </span><span class="c1"># Can be used e.g. for writing batch import files</span>
+<span class="w">  </span><span class="nt">offline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">  </span><span class="c1"># Strict mode: do not allow to create new nodes or relationships without</span>
+<span class="w">  </span><span class="c1"># specifying source, version, and license parameters</span>
+<span class="w">  </span><span class="nt">strict_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="c1"># Schema configuration: mapping of inputs to ontology</span>
+<span class="w">  </span><span class="nt">user_schema_config_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biocypher/_config/test_schema_config.yaml</span>
+
+<span class="w">  </span><span class="c1"># Ontology configuration</span>
+<span class="w">  </span><span class="nt">head_ontology</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/biolink/biolink-model/raw/v3.2.1/biolink-model.owl.ttl</span>
+<span class="w">    </span><span class="nt">root_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">entity</span>
+
+<span class="w">  </span><span class="c1">### Optional parameters ###</span>
+<span class="w">  </span><span class="c1"># Logging granularity</span>
+<span class="w">  </span><span class="c1"># Set debug to true if more granular logging is desired</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="c1"># Set to change the log directory</span>
+<span class="w">  </span><span class="nt">log_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biocypher-log</span>
+
+<span class="w">  </span><span class="c1"># Set to change the output directory</span>
+<span class="w">  </span><span class="nt">output_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">biocypher-out</span>
+
+<span class="w">  </span><span class="c1"># Set to change the Resource cache directory</span>
+<span class="w">  </span><span class="nt">cache_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.cache</span>
+
+<span class="w">  </span><span class="c1"># Optional tail ontologies</span>
+<span class="w">  </span><span class="nt">tail_ontologies</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">so</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test/ontologies/so.owl</span>
+<span class="w">      </span><span class="nt">head_join_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sequence variant</span>
+<span class="w">      </span><span class="nt">tail_join_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sequence_variant</span>
+<span class="w">    </span><span class="nt">mondo</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test/ontologies/mondo.owl</span>
+<span class="w">      </span><span class="nt">head_join_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">disease</span>
+<span class="w">      </span><span class="nt">tail_join_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">disease</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get-involved.html" class="btn btn-neutral float-left" title="Get Involved!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, BioCypher developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Tutorial - Adapters" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://biocypher.org/tutorial-adapter.html" />
+<meta property="og:site_name" content="BioCypher" />
+<meta property="og:description" content="BioCypher pipeline interface A “BioCypher adapter” is a python program responsible for connecting to the BioCypher core and providing it with the data from its associated resource. In doing so, it ..." />
+<meta property="og:image" content="https://biocypher.org/_images/biocypher-open-graph.png" />
+<meta property="og:image:alt" content="BioCypher" />
+<meta name="description" content="BioCypher pipeline interface A “BioCypher adapter” is a python program responsible for connecting to the BioCypher core and providing it with the data from its associated resource. In doing so, it ..." />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://biocypher.org" />
+<meta property="twitter:title" content="Democratising Knowledge Graphs - BioCypher" />
+<meta property="twitter:description" content="BioCypher is a framework to simplify the creation of robust biomedical knowledge graphs." />
+<meta property="twitter:image" content="https://biocypher.org/_images/biocypher-open-graph.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tutorial - Adapters &mdash; BioCypher</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/design-tabs.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Standalone Docker Image" href="standalone-docker-image.html" />
+    <link rel="prev" title="Tutorial - Handling Ontologies" href="tutorial-ontology.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html" class="icon icon-home">
+            BioCypher
+          </a>
+              <div class="version">
+                0.5.41
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Democratising Knowledge Graphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-experiences.html">User Experiences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get-involved.html">Get Involved!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adapters.html">Adapters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/pandas_tutorial.html">Example Notebook: BioCypher and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-ontology.html">Tutorial - Handling Ontologies</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial - Adapters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adapter-philosophy">Adapter philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Adapter functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loading-the-data">1. Loading the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-the-data">2. Passing the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note-strict-mode">Note: Strict mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standalone-docker-image.html">Standalone Docker Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output/index.html">Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r-bioc.html">R and Bioconductor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">BioCypher</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Tutorial - Adapters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial-adapter.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tutorial-adapters">
+<span id="adapter-functions"></span><h1>Tutorial - Adapters<a class="headerlink" href="#tutorial-adapters" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a list of existing and planned adapters, please see <a class="reference internal" href="adapters.html#adapters-info"><span class="std std-ref">here</span></a>.
+You can also get an overview of pipelines and the adapters they use in our <a class="reference external" href="https://meta.biocypher.org">meta
+graph</a>.</p>
+</div>
+<p><img alt="BioCypher pipeline interface" src="_images/figure_pipeline.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To facilitate the creation of a BioCypher pipeline, we have created a template
+repository that can be used as a starting point for your own adapter. It
+contains a basic structure for an adapter, as well as a script that can be used
+as a blueprint for a build pipeline. The repository can be found
+<a class="reference external" href="https://github.com/biocypher/project-template">here</a>.</p>
+</div>
+<p>A “BioCypher adapter” is a python program responsible for connecting to the
+BioCypher core and providing it with the data from its associated resource.
+In doing so, it should adhere to several design principles to ensure simple
+interoperability between the core and multiple adapters. In essence, an adapter
+should conform to an interface that is defined by the core to give information
+about the nodes and edges the adapter provides to enable automatic harmonisation
+of the contents. An adapter can be “primary”, i.e., responsible for a single
+“atomic” resource (e.g. UniProt, Reactome, etc.), or “secondary”, i.e.,
+connecting to a resource that is itself a combination of multiple primary
+resources (e.g. OmniPath, Open Targets, etc.). Due to extensive prior
+harmonisation, the latter is often easier to implement and thus is a good
+starting point that can be subsequently extended to and replaced by primary
+adapters.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The adapter interface is still under development and may change rapidly.</p>
+</div>
+<section id="adapter-philosophy">
+<h2>Adapter philosophy<a class="headerlink" href="#adapter-philosophy" title="Permalink to this heading"></a></h2>
+<p>There are currently two ‘flavours’ of adapters. The first is simpler and used in
+workflows that are similar to harmonisation scripts, where the BioCypher
+interface is instantiated in the same script as the adapter(s). In the second,
+the BioCypher interface is contained in the adapter class, which makes for a
+more complex architecture, but allows for more involved workflows. In
+pseudo-code, the two approaches look like this:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Simple adapter</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biocypher</span> <span class="kn">import</span> <span class="n">BioCypher</span>
+<span class="kn">from</span> <span class="nn">adapter</span> <span class="kn">import</span> <span class="n">Adapter</span>
+
+<span class="n">bc</span> <span class="o">=</span> <span class="n">BioCypher</span><span class="p">()</span>
+<span class="n">adapter</span> <span class="o">=</span> <span class="n">Adapter</span><span class="p">()</span>
+
+<span class="n">bc</span><span class="o">.</span><span class="n">write_nodes</span><span class="p">(</span><span class="n">adapter</span><span class="o">.</span><span class="n">get_nodes</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<p>Here, the script file is the central point of control, orchestrating the entire
+interaction between the BioCypher core and the adapter(s). Examples of this
+simpler format are the <a class="reference external" href="https://github.com/biocypher/open-targets">Open Targets
+KG</a> and the <a class="reference external" href="https://github.com/HUBioDataLab/CROssBAR-BioCypher-Migration">CROssBAR
+v2</a>.</p>
+<p>On the other hand, the more involved approach looks like this:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Adapter base class</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">biocypher</span> <span class="kn">import</span> <span class="n">BioCypher</span>
+
+<span class="k">class</span> <span class="nc">Adapter</span><span class="p">:</span>
+    <span class="n">__bc</span> <span class="o">=</span> <span class="n">BioCypher</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># setup</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_biocypher</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Adapter</span><span class="o">.</span><span class="n">__bc</span>
+
+    <span class="k">def</span> <span class="nf">get_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># ...</span>
+        <span class="k">return</span> <span class="n">nodes</span>
+
+    <span class="k">def</span> <span class="nf">write_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">Adapter</span><span class="o">.</span><span class="n">get_biocypher</span><span class="o">.</span><span class="n">write_nodes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_nodes</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<p>Here, the adapter class (and adapters inheriting from it) contains a singleton
+instance of the BioCypher interface. Thus, the adapter needs to provide
+BioCypher functionality to the outside via dedicated methods. This allows for
+more complex workflows, for instance, reducing clutter when executing multiple
+adapters in a single for-loop, or writing from a stream of data, e.g. in a Neo4j
+transaction (which happens inside the adapter).</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Main script</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">adapters</span> <span class="kn">import</span> <span class="n">AdapterChild1</span><span class="p">,</span> <span class="n">AdapterChild2</span>
+
+<span class="n">adapters</span> <span class="o">=</span> <span class="p">[</span><span class="n">AdapterChild1</span><span class="p">(),</span> <span class="n">AdapterChild2</span><span class="p">()]</span>
+
+<span class="k">for</span> <span class="n">adapter</span> <span class="ow">in</span> <span class="n">adapters</span><span class="p">:</span>
+    <span class="n">adapter</span><span class="o">.</span><span class="n">write_nodes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Examples of this approach are the <a class="reference external" href="https://github.com/IGVF-DACC/igvf-catalog/tree/main/data">IGVF Knowledge
+Graph</a> and the
+<a class="reference external" href="https://github.com/biocypher/clinical-knowledge-graph">Clinical Knowledge
+Graph migration</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While there are differences in implementation details, both approaches are
+largely functionally equivalent. At the current time, there is no clear
+preference for one over the other; both are used. As the ecosystem matures and
+more high-level functionality is added (e.g. the
+<a class="reference external" href="https://github.com/biocypher/biocypher/milestone/1">pipeline</a>), advantages of
+one approach over the other may become more apparent.</p>
+</div>
+</section>
+<section id="id1">
+<h2>Adapter functions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>In general, a single adapter fulfils the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Loading the data from the primary resource, for instance by using pypath
+download / caching functions (as in the <a class="reference external" href="https://github.com/HUBioDataLab/CROssBAR-BioCypher-Migration">UniProt example
+adapter</a>), by
+using columnar distributed data formats such as Parquet (as in the <a class="reference external" href="https://github.com/biocypher/open-targets">Open Targets
+example adapter</a>), by using a running
+database instance (as in the <a class="reference external" href="https://github.com/biocypher/clinical-knowledge-graph">CKG example
+adapter</a>), or by simply
+reading a file from disk (as in the <a class="reference external" href="https://github.com/biocypher/dependency-map">Dependency Map example
+adapter</a>). Generally, any method
+that allows the efficient transfer of the data from adapter to BioCypher core is
+acceptable.</p></li>
+<li><p>Passing the data to BioCypher as a stream or list to be written to the used
+DBMS (or application) via a Python driver (“online”) or via batch import (e.g.
+from CSV files).  The latter has the advantage of high throughput and a low
+memory footprint, while the former allows for a more interactive workflow but is
+often much slower, thus making it better suited for small incremental updates.</p></li>
+<li><p>Providing or connecting to additional functionality that is useful for the
+creation of knowledge graphs, such as identifier translation (e.g. via
+pypath.mapping as in the UniProt example adapter), or identifier and prefix
+standardisation and validation (e.g. via Bioregistry as in the UniProt example
+adapter and others).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For developers: We follow a design philosophy of “separation of concerns” in
+BioCypher. This means that the core should not be concerned with the details of
+how data is loaded, but only with the data itself. This is why the core does not
+contain any code for loading data from a resource, but only for writing it to
+the database. The adapter is responsible for loading the data and passing it to
+the core, which allows for a more modular design and makes it easier to
+maintain, extend, and reuse the code.</p>
+<p>For introduction of new features, we recommend to first implement them in the
+adapter, and to move them to the core only if they have shown to be useful for
+multiple adapters.</p>
+</div>
+</section>
+<section id="loading-the-data">
+<h2>1. Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this heading"></a></h2>
+<p>Depending on the data source, it is up to the developer of the adapter to find
+and define a suitable representation to be piped into BioCypher; for instance,
+in out <code class="docutils literal notranslate"><span class="pre">pypath</span></code> adapter, we load the entire <code class="docutils literal notranslate"><span class="pre">pypath</span></code> object into memory to
+be passed to BioCypher using a generator that evaluates each <code class="docutils literal notranslate"><span class="pre">pypath</span></code> object
+and transforms it to the tuple representation described below. This is made
+possible by the “pre-harmonised” form in which the data is represented within
+<code class="docutils literal notranslate"><span class="pre">pypath</span></code>. For more heterogeneous data representations, additional
+transformations may be necessary before piping into BioCypher.</p>
+<p>For larger datasets, it can be beneficial to adopt a streaming approach or batch
+processing, as demonstrated in the <a class="reference external" href="https://github.com/biocypher/open-targets">Open Targets
+adapter</a> and the <a class="reference external" href="https://github.com/biocypher/clinical-knowledge-graph">CKG
+adapter</a>. BioCypher can
+handle input streams of arbitrary length via Python generators.</p>
+</section>
+<section id="passing-the-data">
+<h2>2. Passing the Data<a class="headerlink" href="#passing-the-data" title="Permalink to this heading"></a></h2>
+<p>We currently pass data into BioCypher as a collection of tuples. Nodes are
+represented as 3-tuples, containing:</p>
+<ul class="simple">
+<li><p>the node ID (unique in the space of the knowledge graph, ideally a CURIE with
+a prefix registered in the Bioregistry)</p></li>
+<li><p>the node type, i.e., its label (this is the string that is mapped to an
+ontological class via the <code class="docutils literal notranslate"><span class="pre">input_label</span></code> field in the schema configuration)</p></li>
+<li><p>a dictionary of node attributes</p></li>
+</ul>
+<p>While edges are represented as 5-tuples, containing:</p>
+<ul class="simple">
+<li><p>the (optional) relationship ID (unique in the space of the KG)</p></li>
+<li><p>the source node ID (referring to a unique node ID in the KG)</p></li>
+<li><p>the target node ID (referring to a unique node ID in the KG)</p></li>
+<li><p>the relationship type, i.e., its label (this is the string that is mapped to
+an ontological class via the <code class="docutils literal notranslate"><span class="pre">input_label</span></code> field in the schema configuration)</p></li>
+<li><p>a dictionary of relationship attributes</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This representation will probably be subject to change soon and yield to a more
+standardised interface for nodes and edges, derived from a BioCypher core class.
+We refer to this development in an
+<a class="reference external" href="https://github.com/orgs/biocypher/projects/1?pane=issue&amp;itemId=23739517">issue</a>.</p>
+</div>
+</section>
+<section id="note-strict-mode">
+<h2>Note: Strict mode<a class="headerlink" href="#note-strict-mode" title="Permalink to this heading"></a></h2>
+<p>We can activate BioCypher strict mode with the <code class="docutils literal notranslate"><span class="pre">strict_mode</span></code> option in the
+configuration. In strict mode, the driver will raise an error if it encounters a
+node or edge without data source, version, and licence. These currently need to
+be provided as part of the node and edge attribute dictionaries, with the
+reserved keywords <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code>, and <code class="docutils literal notranslate"><span class="pre">licence</span></code> (or <code class="docutils literal notranslate"><span class="pre">license</span></code>). This may
+change to a more rigorous implementation in the future.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial-ontology.html" class="btn btn-neutral float-left" title="Tutorial - Handling Ontologies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="standalone-docker-image.html" class="btn btn-neutral float-right" title="Standalone Docker Image" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, BioCypher developers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

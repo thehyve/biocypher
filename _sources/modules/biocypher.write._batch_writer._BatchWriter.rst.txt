@@ -1,0 +1,33 @@
+﻿biocypher.write.\_batch\_writer.\_BatchWriter
+=============================================
+
+.. currentmodule:: biocypher.write._batch_writer
+
+.. autoclass:: _BatchWriter
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~_BatchWriter.__init__
+      ~_BatchWriter.get_import_call
+      ~_BatchWriter.write_edges
+      ~_BatchWriter.write_import_call
+      ~_BatchWriter.write_nodes
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~_BatchWriter.import_call_file_prefix
+      ~_BatchWriter.outdir
+   
+   
